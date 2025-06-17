@@ -2,27 +2,22 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-export interface Platform {
+export interface Genre {
   id: number;
   name: string;
   slug: string;
-}
-export interface Game {
-  id: number;
-  name: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
+  games_count: number;
+  image_background: string;
 }
 
-interface GetGamesResponse {
+interface GetGenreResponse {
   count: number;
-  results: Game[];
+  results: Genre[];
 }
 
-// Custom hook to fetch and return a list of games from the using an axios apiClient
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
+// Custom hook to fetch and return a list of genres from the using an axios apiClient
+const useGenres = () => {
+  const [genres, setGenres] = useState<Genre[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,9 +26,9 @@ const useGames = () => {
     const controller = new AbortController();
     setIsLoading(true);
     apiClient
-      .get<GetGamesResponse>("/games", { signal: controller.signal })
+      .get<GetGenreResponse>("/genres", { signal: controller.signal })
       .then((res) => {
-        setGames(res.data.results);
+        setGenres(res.data.results);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -47,7 +42,7 @@ const useGames = () => {
     return () => controller.abort();
   }, []); // Empty dependency array ([]) = run once on mount
 
-  return { games, error, isLoading };
+  return { genres, error, isLoading };
 };
 
-export default useGames;
+export default useGenres;
