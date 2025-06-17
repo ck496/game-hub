@@ -34,7 +34,7 @@ const PlatformIconList = ({ platforms }: Props) => {
     // Better to have a numeric val like 1 vs having '10px'. This means theme.space val x1, allows your margins/spaces etc to consistent across all components
     <HStack marginY={1}>
       {platforms.map((platform) => (
-        <Icon as={iconMap[platform.slug]} color="gray.500" />
+        <Icon as={iconMap[platform.slug]} color="gray.500" key={platform.id} />
       ))}
     </HStack>
   );
