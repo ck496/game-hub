@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-import { CanceledError } from "axios";
+import useData from "./useData";
 
 export interface Platform {
   id: number;
@@ -15,39 +13,7 @@ export interface Game {
   metacritic: number;
 }
 
-interface GetGamesResponse {
-  count: number;
-  results: Game[];
-}
-
-// Custom hook to fetch and return a list of games from the using an axios apiClient
-const useGames = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    // AbortController to handle cancellations if component unmounts while request is still processing
-    const controller = new AbortController();
-    setIsLoading(true);
-    apiClient
-      .get<GetGamesResponse>("/games", { signal: controller.signal })
-      .then((res) => {
-        setGames(res.data.results);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        // ignore errors caused by Cancellations
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setIsLoading(false);
-      });
-
-    // Cleanup function to cancel request when component unmounts
-    return () => controller.abort();
-  }, []); // Empty dependency array ([]) = run once on mount
-
-  return { games, error, isLoading };
-};
+// useGames hook calls generic data fetching hook useData to fetch a list of games
+const useGames = () => useData<Game>("/games");
 
 export default useGames;
