@@ -12,6 +12,10 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav" "aside main"`, //For devices larger than 1020 px show side bar etc
       }}
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
     >
       <GridItem area="nav">
         <NavBar />
