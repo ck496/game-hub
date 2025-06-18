@@ -27,7 +27,10 @@ function App() {
       <Show above="lg">
         {/* Only show Component for lg size displays and above */}
         <GridItem area="aside">
-          <GenreList onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenreList
+            selectedGenre={selectedGenre}
+            onSelectGenre={(genre) => setSelectedGenre(genre)}
+          />
         </GridItem>
       </Show>
 
