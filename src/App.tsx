@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react";
+import { Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
@@ -40,10 +40,12 @@ function App() {
       </Show>
 
       <GridItem area="main">
-        <PlatformSelector
-          selectedPlatform={selectedPlatform}
-          onSelectPlatform={(platform) => setSelectedPlatform(platform)}
-        />
+        <Flex direction="column" align="flex-start" padding={2}>
+          <PlatformSelector
+            selectedPlatform={selectedPlatform}
+            onSelectPlatform={(platform) => setSelectedPlatform(platform)}
+          />
+        </Flex>
         <GameGrid
           selectedGenre={selectedGenre}
           selectedPlatform={selectedPlatform}

@@ -9,7 +9,7 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import { HStack, Icon, Text } from "@chakra-ui/react";
+import { HStack, Icon } from "@chakra-ui/react";
 import { Platform } from "../hooks/usePlatforms";
 import { IconType } from "react-icons";
 
@@ -25,8 +25,10 @@ const PlatformIconList = ({ platforms }: Props) => {
     playstation: FaPlaystation,
     xbox: FaXbox,
     nintendo: SiNintendo,
+    mac: FaApple,
     linux: FaLinux,
     ios: MdPhoneIphone,
+    android: FaAndroid,
     web: BsGlobe,
   };
 
