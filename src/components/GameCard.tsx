@@ -14,8 +14,8 @@ const GameCard = ({ game }: Props) => {
       <Image src={getCroppedUrl(game.background_image)} />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
-        {/* Constructs an array of platform objects this way cuz response from api maps it weird */}
         <HStack justifyContent="space-between">
+          {/* Constructs an array of platform objects this way cuz response from api maps it weird */}
           <PlatformIconList
             platforms={game.parent_platforms.map((item) => item.platform)}
           />
