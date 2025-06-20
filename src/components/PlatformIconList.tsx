@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
-import { BsGlobe } from "react-icons/bs";
+import { BsGlobe, BsJoystick, BsController } from "react-icons/bs";
 import { HStack, Icon } from "@chakra-ui/react";
 import { Platform } from "../hooks/usePlatforms";
 import { IconType } from "react-icons";
@@ -30,6 +30,8 @@ const PlatformIconList = ({ platforms }: Props) => {
     ios: MdPhoneIphone,
     android: FaAndroid,
     web: BsGlobe,
+    atari: BsJoystick,
+    sega: BsController,
   };
 
   return (
