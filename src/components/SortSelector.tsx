@@ -1,23 +1,39 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 
-const SortSelector = () => {
-  // const { data, error, isLoading } = usePlatforms();
+interface Props {
+  sortOrder: string;
+  onSelectSortOrder: (sortOrder: string) => void;
+}
+const SortSelector = ({ sortOrder, onSelectSortOrder }: Props) => {
+  const sortOrderMap = [
+    { value: "", label: "Relevance" },
+    { value: "name", label: "Name" },
+    { value: "-released", label: "Release Date" },
+    { value: "-added", label: "Date Added" },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "-rating", label: "Avg Rating" },
+  ];
 
-  //If theres an error don't display components, better than throwing an error to user
-  // if (error) return null;
+  const currentSortOrder = sortOrderMap.find(
+    (order) => order.value === sortOrder
+  );
+
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        Sort: Relevance
+        Sort: {currentSortOrder?.label || "Relevance"}
       </MenuButton>
       <MenuList>
-        <MenuItem>Relevance</MenuItem>
-        <MenuItem>Popularity</MenuItem>
-        <MenuItem>Average Rating</MenuItem>
-        <MenuItem>Name</MenuItem>
-        <MenuItem>Date Added</MenuItem>
-        <MenuItem>Release Date</MenuItem>
+        {sortOrderMap.map((order) => (
+          <MenuItem
+            key={order.value}
+            value={order.value}
+            onClick={() => onSelectSortOrder(order.value)}
+          >
+            {order.label}
+          </MenuItem>
+        ))}
       </MenuList>
     </Menu>
   );
