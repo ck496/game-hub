@@ -12,14 +12,18 @@ A SPA built with React and TypeScript allowing you to view, search, filter and s
 ## Usage
 
 ```bash
+# Clone project
 git clone https://github.com/ck496/game-hub.git
-
 cd game-hub
 
+# Create a .env file and add your RAWG API key
+echo "VITE_RAWG_API_KEY=your_api_key_here" > .env
+
+# Install dependencies
 npm install
 
+# Start the development server
 npm run dev
-
 ```
 
 ## Preview
