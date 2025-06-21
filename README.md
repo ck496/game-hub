@@ -25,5 +25,5 @@ npm run dev
 ## Preview
 
 <p align="center">
-  <img src="./assets/Screenshot.png" alt="Game Hub Screenshot" width="600"/>
+  <img src="./assets/Screenshot.png" alt="Game Hub Screenshot" width="800"/>
 </p>
