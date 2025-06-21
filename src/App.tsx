@@ -39,7 +39,7 @@ function App() {
 
       <Show above="lg">
         {/* Only show Component for lg size displays and above */}
-        <GridItem area="aside">
+        <GridItem area="aside" marginTop={10}>
           <GenreList
             selectedGenre={gameQuery.genre}
             onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
